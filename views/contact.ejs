@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="mt-3">Daftar contacts</h2>
+      <a href="/contact/add" class="btn btn-danger">Tambah Data</a>
+      <!-- pengecekan msg dari 3 npm itu -->
+      <% if (msg.length !==0) { %>
+        <div class="alert alert-primary" role="alert">
+          <%= msg %>
+        </div>
+        <% } %>
+
+          <table class="table">
+
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">No.Hp</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (contacts.length===0) { %>
+                <div class="alert alert-danger" role="alert">
+                  Data masih kosong
+                </div>
+                <% } %>
+                  <% let no=1 %>
+                    <% contacts.forEach((contact)=> { %>
+                      <tr>
+                        <th scope="row">
+                          <%= no++ %>
+                        </th>
+                        <td>
+                          <%= contact.nama %>
+                        </td>
+                        <td>
+                          <%= contact.nohp %>
+                        </td>
+                        <td>
+                          <a href="/contact/<%= contact.nama %>" class="btn bg-danger badge">Detail</a>
+                        </td>
+                      </tr>
+                      <% }) %>
+
+            </tbody>
+
+          </table>
+    </div>
+  </div>
+</div>

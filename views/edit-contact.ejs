@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Form Edit data</h2>
+
+            <!-- untuk mengecek apakah ada errors di ejsnya -->
+            <% if (typeof errors !='undefined' ) { %>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <% errors.forEach(error=> { %>
+                            <li>
+                                <%= error.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                    <!-- Form contactnya -->
+                    <form method="post" action="/contact/update">
+                        <!-- untuk bisa akses ke nama yang lama setelah diubah -->
+                        <input type="hidden" name="oldNama"
+                            value="<%= (contact.oldNama) ? contact.oldNama : contact.nama %>">
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" name="nama" id="nama" value="<%= contact.nama %>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" id="email"
+                                value="<%= contact.email %>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nohp" class="form-label">No.Hp</label>
+                            <input type="text" class="form-control" name="nohp" id="nohp" value="<%= contact.nohp %>">
+                        </div>
+
+                        <button type="submit" class="btn btn-danger">Selesai</button>
+                    </form>
+        </div>
+    </div>
+</div>
